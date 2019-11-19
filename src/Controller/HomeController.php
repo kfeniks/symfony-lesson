@@ -24,8 +24,7 @@ class HomeController extends AbstractController
      */
     public function custom(Request $request): Response
     {
-        var_dump($request);
-        dump($request);
+       // var_dump($request);
         return new Response('<h1>Welcome custom!</h1>');
     }
 }
