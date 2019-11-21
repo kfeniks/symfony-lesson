@@ -4,6 +4,42 @@
 
 {% block body %}
 
-    {% block body %}
+    <h2>List of all posts</h2>
+
+    {# read and display just one flash message type #}
+    {% for message in app.flashes('success') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>TITLE</td>
+                <td>ACTIONS</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>
+                    <a href="{{ path('post.show', {id: post.id}) }}">
+                        {{ post.title }}
+                    </a>
+                </td>
+                <td>
+                    <a class="text-danger" href="{{ path('post.delete', {id: post.id}) }}">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
