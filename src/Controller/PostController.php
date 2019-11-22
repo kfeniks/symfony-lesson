@@ -41,13 +41,16 @@ class PostController extends AbstractController
         $form = $this->createForm(PostType::class, $post);
 
         $form->handleRequest($request);
+        $form->getErrors();
 
-        if($form->isSubmitted()) {
+        if($form->isSubmitted() && $form->isValid()) {
             // entity manager
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
             $this->addFlash('success', 'Post was added');
+
+            return $this->redirect($this->generateUrl('post.index'));
         }
 
 //        return new Response('Post was created');
