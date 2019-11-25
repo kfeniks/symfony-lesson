@@ -29,7 +29,7 @@ class ParsehtmlCommand extends Command
         $html = file_get_contents($url);
         $crawler = new Crawler(null, $url);
         $crawler->addHtmlContent($html, 'UTF-8');
-        $links = $crawler->filterXPath('//article')->each(function (Crawler $node, $i) {
+        $crawler->filterXPath('//main/article')->each(function (Crawler $node, $i) {
             var_dump($node->children('div > a')->attr('href'));
             return $node->attr('href');
         });
