@@ -18,8 +18,7 @@ class PostType extends AbstractType
                 'attr' => [
                     'class' => 'btn btn-primary float-right'
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
