@@ -46,6 +46,9 @@ class PostController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             // entity manager
             $em = $this->getDoctrine()->getManager();
+
+            var_dump($request->files);die;
+
             $em->persist($post);
             $em->flush();
             $this->addFlash('success', 'Post was added');
